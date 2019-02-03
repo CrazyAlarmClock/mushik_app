@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'model.dart';
 import 'text_style.dart';
 import 'card_page.dart';
-
+/// аахахахахахахахахахаахахахахахахахахахахах
 class MyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

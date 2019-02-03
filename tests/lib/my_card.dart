@@ -4,6 +4,8 @@ import 'model.dart';
 import 'text_style.dart';
 import 'card_page.dart';
 
+//awdakwdawdawd
+
 class MyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

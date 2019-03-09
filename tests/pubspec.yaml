@@ -22,6 +22,9 @@ dependencies:
   fluttertoast: ^2.1.5
   intro_views_flutter: ^2.4.0
   shared_preferences: ^0.4.3
+  rflutter_alert: ^ 1.0.2
+  rich_alert: ^0.1.32
+
 
 
 
@@ -49,6 +52,10 @@ flutter:
     - images/user.png
     - images/news.png
     - images/mars.png
+    - images/fav.png
+    - images/mars2.png
+
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

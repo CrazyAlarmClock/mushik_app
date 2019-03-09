@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 //classes
 import 'my_card.dart';
 import 'onboarding.dart';
-import 'placeholder_widget.dart';
+import 'my_history.dart';
 import 'card_page.dart';
 
 _incrementCounterCheck() async {
@@ -67,8 +67,7 @@ class _MainPageState extends State<MainPage> {
               new Column(
                 children: <Widget>[MyCard()],
               ),
-              new PlaceholderWidget(Colors.blueAccent),
-              new PlaceholderWidget(Colors.deepOrange),
+              new MyHistory(),
             ],
 
             /// Specify the page controller
@@ -80,7 +79,7 @@ class _MainPageState extends State<MainPage> {
               canvasColor: Colors.white,
             ), // sets the inactive color of the `BottomNavigationBar`
             child: new BottomNavigationBar(
-                fixedColor: Colors.green,
+                fixedColor: Colors.blueAccent,
                 items: [
                   BottomNavigationBarItem(
                     icon: Icon(Icons.format_align_justify),

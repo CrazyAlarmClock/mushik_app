@@ -4,8 +4,6 @@ import 'model.dart';
 import 'text_style.dart';
 import 'card_page.dart';
 
-//awdakwdawdawd
-
 class MyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -66,7 +64,7 @@ class PlanetRow extends StatelessWidget {
 //                      value: planet.distance, image: "images/mars.png")),
               new Expanded(
                  flex: horizontal ? 1 : 0,
-                  child: _planetValue(value: planet.gravity, image: "images/mars.png"))
+                  child: _planetValue(value: planet.gravity, image: "images/fav.png"))
             ],
           ),
         ],

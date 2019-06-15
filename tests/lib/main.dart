@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tests/detali_page_myhistory.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:flutter_launcher_icons/android.dart';
+import 'package:flutter_launcher_icons/constants.dart';
+import 'package:flutter_launcher_icons/custom_exceptions.dart';
+import 'package:flutter_launcher_icons/ios.dart';
+import 'package:flutter_launcher_icons/main.dart';
+import 'package:flutter_launcher_icons/xml_templates.dart';
 
 //classes
 import 'my_card.dart';
 import 'onboarding.dart';
 import 'my_history.dart';
 import 'card_page.dart';
+import 'detali_page_myhistory.dart';
+import 'package:tests/Profile.dart';
+import 'Login_Activity.dart';
+
 
 _incrementCounterCheck() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -42,6 +54,7 @@ class Myapp extends StatelessWidget {
 }
 
 class MainPage extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() {
     return new _MainPageState();
@@ -49,6 +62,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  List historyLocals;
   /// This controller can be used to programmatically
   /// set the current displayed page
   PageController _pageController;
@@ -68,16 +82,14 @@ class _MainPageState extends State<MainPage> {
                 children: <Widget>[MyCard()],
               ),
               new MyHistory(),
+              new Profile()
             ],
-
-            /// Specify the page controller
             controller: _pageController,
             onPageChanged: onPageChanged),
         bottomNavigationBar: new Theme(
             data: Theme.of(context).copyWith(
-              // sets the background color of the `BottomNavigationBar`
               canvasColor: Colors.white,
-            ), // sets the inactive color of the `BottomNavigationBar`
+            ),
             child: new BottomNavigationBar(
                 fixedColor: Colors.blueAccent,
                 items: [
@@ -92,9 +104,6 @@ class _MainPageState extends State<MainPage> {
                     title: Text("Профиль"),
                   )
                 ],
-
-                /// Will be used to scroll to the next page
-                /// using the _pageController
                 onTap: navigationTapped,
                 currentIndex: _page)));
   }
@@ -112,11 +121,13 @@ class _MainPageState extends State<MainPage> {
   void onPageChanged(int page) {
     setState(() {
       this._page = page;
+
     });
   }
 
   @override
   void initState() {
+    historyLocals = getHistoryLocal();
     super.initState();
     _pageController = new PageController();
   }
@@ -127,3 +138,4 @@ class _MainPageState extends State<MainPage> {
     _pageController.dispose();
   }
 }
+

@@ -1,179 +1,108 @@
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:tests/card_page.dart';
+import 'create_history.dart';
+import 'model.dart';
+import 'package:path/path.dart';
+import 'main.dart';
+import 'detali_page_myhistory.dart';
 
+class ListPage extends StatefulWidget {
 
+  @override
+  _ListPageState createState() => _ListPageState();
+}
+
+class _ListPageState extends State<ListPage> {
+  List historyLocals;
+
+  @override
+  void initState() {
+    historyLocals = getHistoryLocal();
+    super.initState();
+  }
+
+  noSuchMethod(Invocation invocation) => super.noSuchMethod(invocation);
+}
 class MyHistory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
-        body: new PageView(
-            children: <Widget>[
-              new Column(
-                children: <Widget>[makeCard,makeCard2,makeCard3,makeCard4,makeCard5],
-              ),
-            ],
+      ListTile makeListTile(HistoryLocal historyLocal) => ListTile(
+        contentPadding:
+        EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        leading: Container(
+          padding: EdgeInsets.only(right: 12.0),
+          decoration: new BoxDecoration(
+              border: new Border(
+                  right: new BorderSide(width: 1.0, color: Colors.white24))),
+          child: Icon(Icons.autorenew, color: Colors.white),
         ),
-         floatingActionButton: new FloatingActionButton(
-         onPressed: () => lol,
-    child: new Icon(Icons.add))
-     );
+        title: Text(
+          historyLocal.name,
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+
+        subtitle: Row(
+          children: <Widget>[
+            Expanded(
+                flex: 1,
+                child: Container(
+                  // tag: 'hero',
+                  child: Icon(Icons.date_range,color:Colors.grey),
+                )),
+            Expanded(
+              flex: 4,
+              child: Padding(
+                  padding: EdgeInsets.only(left: 10.0),
+                  child: Text(historyLocal.date,
+                      style: TextStyle(color: Colors.white))),
+            )
+          ],
+        ),
+
+        onTap: () {
+          getHistoryLocal();
+          Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => detali_page_myhistory(historyLocal: historyLocal),
+              ));
+        },
+      );
+      Card makeCard(HistoryLocal historyLocal) => Card(
+        elevation: 8.0,
+        margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+        child: Container(
+          decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
+          child: makeListTile(historyLocal),
+        ),
+      );
+
+      final makeBody = Container(
+        child: ListView.builder(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+
+          itemCount:getHistoryLocal().length,
+          itemBuilder: (BuildContext context, int index) {
+            return makeCard(getHistoryLocal()[index]);
+          },
+        ),
+      );
+      return Scaffold(
+    body: makeBody,
+          floatingActionButton: new FloatingActionButton(
+              onPressed: () =>  Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>CrateHistory()),
+              ),
+              child: new Icon(Icons.add))
+      );
+  }
   }
 
+List getHistoryLocal() {
+  return historyLocals;
 }
-final makeCard = Card(
-  child: Container(
-    padding: EdgeInsets.symmetric(vertical: 10),
-  ),
-);
-
-final makeListTile = ListTile(
-    contentPadding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-    // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
-    );
 
 
 
-
-
-final makeCard2 = Card(
-  elevation: 3.0,
-  margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-  child: Container(
-    decoration: BoxDecoration(color: Color.fromRGBO(0, 0, 0, .0)),
-    child: makeListTile2,
-  ),
-);
-
-final makeListTile2 = ListTile(
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-    onTap: () => lol,
-    leading: Container(
-      padding: EdgeInsets.only(right: 2.0),
-      decoration: new BoxDecoration(
-          border: new Border(
-              right: new BorderSide(width: 1.0, color: Colors.white24))),
-      child: Icon(Icons.autorenew, color: Colors.grey),
-    ),
-    title: Text(
-      "Как я помог бабуле",
-      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-    ),
-    // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
-
-    subtitle: Row(
-      children: <Widget>[
-        Icon(Icons.date_range, color: Colors.blueAccent),
-        Text(" 22.12.2018", style: TextStyle(color: Colors.black))
-      ],
-    ));
-
-final makeCard3 = Card(
-  elevation: 3.0,
-  margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-  child: Container(
-    decoration: BoxDecoration(color: Color.fromRGBO(0, 0, 0, .0)),
-    child: makeListTile3,
-  ),
-
-);
-
-final makeListTile3 = ListTile(
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-    leading: Container(
-
-      padding: EdgeInsets.only(right: 2.0),
-      decoration: new BoxDecoration(
-          border: new Border(
-              right: new BorderSide(width: 1.0, color: Colors.white24))),
-      child: Icon(Icons.check, color: Colors.grey),
-    ),
-    title: Text(
-      "Мой друг",
-      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-    ),
-    // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
-
-    subtitle: Row(
-      children: <Widget>[
-        Icon(Icons.date_range, color: Colors.blueAccent),
-        Text(" 25.11.2018", style: TextStyle(color: Colors.black))
-      ],
-
-    ),
-    trailing:  Icon(Icons.favorite, color: Colors.grey, size: 30.0),
-);
-
-final makeCard4 = Card(
-  elevation: 3.0,
-  margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-  child: Container(
-    decoration: BoxDecoration(color: Color.fromRGBO(0, 0, 0, .0)),
-    child: makeListTile4,
-  ),
-);
-
-final makeListTile4 = ListTile(
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-    leading: Container(
-      padding: EdgeInsets.only(right: 2.0),
-      decoration: new BoxDecoration(
-          border: new Border(
-              right: new BorderSide(width: 1.0, color: Colors.white24))),
-      child: Icon(Icons.check, color: Colors.grey),
-    ),
-    title: Text(
-      "Мой друг",
-      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-    ),
-    // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
-
-    subtitle: Row(
-      children: <Widget>[
-        Icon(Icons.date_range, color: Colors.blueAccent),
-        Text(" 25.11.2018", style: TextStyle(color: Colors.black))
-      ],
-    ));
-
-final makeCard5 = Card(
-  elevation: 3.0,
-  margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-  child: Container(
-    decoration: BoxDecoration(color: Color.fromRGBO(0, 0, 0, .0)),
-    child: makeListTile5,
-  ),
-);
-
-final makeListTile5 = ListTile(
-    contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-    leading: Container(
-      padding: EdgeInsets.only(right: 2.0),
-      decoration: new BoxDecoration(
-          border: new Border(
-              right: new BorderSide(width: 1.0, color: Colors.white24))),
-      child: Icon(Icons.check, color: Colors.grey),
-    ),
-    title: Text(
-      "Мой друг",
-      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-    ),
-    // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
-
-    subtitle: Row(
-      children: <Widget>[
-        Icon(Icons.date_range, color: Colors.blueAccent),
-        Text(" 25.11.2018", style: TextStyle(color: Colors.black))
-      ],
-    ));
-
-void lol(){
-  Fluttertoast.showToast(
-      msg: "This is Center Short Toast",
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.CENTER,
-      timeInSecForIos: 1,
-      backgroundColor: Colors.red,
-      textColor: Colors.white,
-      fontSize: 16.0
-  );
-}

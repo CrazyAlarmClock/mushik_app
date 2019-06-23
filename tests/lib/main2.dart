@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'auth/authentication.dart'
-;import 'root_page.dart';
+import 'auth/authentication.dart';
+import 'root_page.dart';
 
 
 class main2 extends StatelessWidget {

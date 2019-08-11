@@ -21,12 +21,8 @@ class PlanetRow extends StatelessWidget {
   final bool horizontal;
   PlanetRow(this.planet, {this.horizontal = true});
   PlanetRow.vertical(this.planet): horizontal = false;
-
-
-
   @override
   Widget build(BuildContext context) {
-
     Widget _planetValue({String value, String image}) {
       return new Row(children: <Widget>[
         new Image.asset(image, height: 20.0),
@@ -37,12 +33,9 @@ class PlanetRow extends StatelessWidget {
     }
 
     final planetCardContent = new Container(
-      //margin: new EdgeInsets.fromLTRB(100.0, 16.0, 16.0, 16.0),
       margin: new EdgeInsets.fromLTRB(horizontal ? 110.0 : 24.0, horizontal ? 16.0 : 144.0, 24.0, 25.0), ////// fffffffff
-
         constraints: new BoxConstraints.expand(),
       child: new Column(
-        //crossAxisAlignment: CrossAxisAlignment.start,
        crossAxisAlignment: horizontal ? CrossAxisAlignment.start : CrossAxisAlignment.center,
         children: <Widget>[
           new Container(height: 6.0),
@@ -59,12 +52,9 @@ class PlanetRow extends StatelessWidget {
               color: new Color(0xff00c6ff)), ///////////////////////////
           new Row(
             children: <Widget>[
-//              new Expanded(
-//                  child: _planetValue(
-//                      value: planet.distance, image: "images/mars.png")),
               new Expanded(
                  flex: horizontal ? 1 : 0,
-                  child: _planetValue(value: planet.gravity, image: "images/mars.png"))
+                  child: _planetValue(value: planet.gravity, image: "images/fav.png"))
             ],
           ),
         ],
@@ -72,9 +62,6 @@ class PlanetRow extends StatelessWidget {
     );
 
     final planetCard = new Container(
-
-//      height: 124.0,
-//      margin: new EdgeInsets.only(left: 46.0),
         height: horizontal ? 200.0 : 0.0,
           margin: horizontal ? new EdgeInsets.only(left: 46.0) : new EdgeInsets.only(bottom: 0.0),
       decoration: new BoxDecoration(
@@ -107,9 +94,6 @@ class PlanetRow extends StatelessWidget {
     );
 
     return new GestureDetector(
-//        onTap: () => Navigator.of(context).push(new PageRouteBuilder(
-//              pageBuilder: (_, __, ___) => new DetailPage(planet),
-//            )),
         onTap: horizontal
           ? () => Navigator.of(context).push(
             new PageRouteBuilder(pageBuilder: (_, __, ___) => new DetailPage(planet),

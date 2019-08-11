@@ -45,7 +45,7 @@ class DetailPage extends StatelessWidget {
     return new ListView(
       padding: new EdgeInsets.fromLTRB(0.0, 60.0, 0.0, 0.0),
       children: <Widget>[
-        new PlanetRow(planet, horizontal: false,),
+        Center(child: Center(child: new PlanetRow(planet, horizontal: false,))),
         new Container(
           padding: new EdgeInsets.symmetric(horizontal: 32.0),
           child: new Column(

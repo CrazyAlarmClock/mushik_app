@@ -5,15 +5,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-
-
-
-
+import 'Login_Activity.dart';
 import 'main.dart';
+import 'package:tests/Reg_activity.dart';
+import 'login_signup_page.dart';
+import 'main2.dart';
 
 class OnBoarding extends StatelessWidget {
-
   //making list of pages needed to pass in IntroViewsFlutter constructor.
   final pages = [
     PageViewModel(
@@ -21,7 +19,7 @@ class OnBoarding extends StatelessWidget {
         // iconImageAssetPath: 'assets/air-hostess.png',
         bubble: Icon(Icons.format_align_justify),
         body: Text(
-          'Тут ты можешь посмотреть на достижения в добрых делах у других лбюдей',
+          'Тут ты можешь посмотреть на достижения в добрых делах у других людей',
         ),
         title: Text(
           'Новости',
@@ -41,7 +39,7 @@ class OnBoarding extends StatelessWidget {
         // iconImageAssetPath: 'assets/air-hostess.png',
         bubble: Icon(Icons.edit),
         body: Text(
-          'Тут ты можешь записывать свои добрые дела чтоб ты потом смог поделиться и запечатлить их в этом приложении',
+          'Тут ты можешь записывать свои добрые дела, чтобы ты потом смог поделиться и запечатлить их в этом приложении',
         ),
         title: Text(
           'Дневник',
@@ -75,11 +73,12 @@ class OnBoarding extends StatelessWidget {
           width: 285.0,
           alignment: Alignment.center,
         )),
+
   ];
 
   @override
   Widget build(BuildContext context) {
-
+    _incrementCounter();
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         systemNavigationBarColor: Colors.white,
         statusBarColor: Colors.white,
@@ -87,19 +86,15 @@ class OnBoarding extends StatelessWidget {
         statusBarIconBrightness: Brightness.dark
     ));
     return MaterialApp(
-
       debugShowCheckedModeBanner: false,
-
       home: Builder(
-
         builder: (context) => IntroViewsFlutter(
           pages,
           onTapDoneButton: () {
-            _incrementCounter();
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => Myapp(),
+                builder: (context) => main2(),
               ), //MaterialPageRoute
             );
           },

@@ -1,8 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
-import 'package:mushik/service/auth.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'menu_bar.dart';
@@ -87,7 +86,7 @@ class _StoryPageState extends State<Story> {
                   ),
                   title: Text('Дата', textScaleFactor: 1.2),
                   subtitle: Text(
-                    widget.title,
+                    widget.date,
                     textScaleFactor: 1.2,
                   ),
                 ),

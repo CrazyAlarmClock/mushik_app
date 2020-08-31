@@ -1,11 +1,3 @@
-import 'dart:html';
-
-import 'package:flutter/material.dart';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'menu_bar.dart';
-
 
 class Story extends StatefulWidget {
   String title;
@@ -25,7 +17,6 @@ class Story extends StatefulWidget {
 
 class _StoryPageState extends State<Story> {
   Firestore firestore = Firestore.instance;
-  var doc = document.toString();
 
   @override
   Widget build(BuildContext context) {

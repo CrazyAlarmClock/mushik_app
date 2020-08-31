@@ -1,12 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:mushik/service/auth.dart';
-import 'package:mushik/service/user_info.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'home_screen.dart';
-import 'menu_bar.dart';
 
 class AddHistory extends StatefulWidget {
   @override

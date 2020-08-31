@@ -1,4 +1,3 @@
-import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:mushik/service/auth.dart';
@@ -25,7 +24,6 @@ class MyStory extends StatefulWidget {
 
 class _MyStoryPageState extends State<MyStory> {
   Firestore firestore = Firestore.instance;
-  var doc = document.toString();
 
   @override
   Widget build(BuildContext context) {

@@ -1,10 +1,4 @@
-
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:mushik/service/user_info.dart';
-
-import 'menu_bar.dart';
+;
 
 class EditHistory extends StatefulWidget {
   String body;

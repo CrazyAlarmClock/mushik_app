@@ -1,11 +1,3 @@
-import 'package:firebase/firebase.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:mushik/main.dart';
-import 'package:mushik/service/auth.dart';
-import 'package:mushik/service/user_info.dart';
-
-
 
 
 class Profile extends StatelessWidget {

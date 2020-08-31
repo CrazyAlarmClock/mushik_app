@@ -1,12 +1,5 @@
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:mushik/service/auth.dart';
-import 'package:mushik/service/user_info.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-import '../main.dart';
-import 'home_screen.dart';
+import 'package:flutter/material.dart';
 
 class RegistPage extends StatefulWidget {
   @override

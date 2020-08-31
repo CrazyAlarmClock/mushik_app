@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "996368974163",
+    "firebase_url": "https://mushik-ad422.firebaseio.com",
+    "project_id": "mushik-ad422",
+    "storage_bucket": "mushik-ad422.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996368974163:android:c9d96a86c81191cd3ca1a6",
+        "android_client_info": {
+          "package_name": "ru.mushik.crazyalarmclock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "996368974163-une2ik4obva6kkh0b7thfhhq4td6kvn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFBZtCCUoDlPRt6c8_wkFDFXqKDgobXbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "996368974163-2089qll6a98b9gl2ji18disnt4vgfbmh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
